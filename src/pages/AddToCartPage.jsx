@@ -4,15 +4,35 @@ import HeaderFront from "../components/HeaderFront";
 
 import LoadingView from "../components/LoadingView";
 import { useDispatch, useSelector } from "react-redux";
-import { updateQuantity } from "../redux/slices/cartSlice";
+import { decreaseQty, increaseQty } from "../redux/slices/cartSlice";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddToCartPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let backUrl = import.meta.env.VITE_BACKEND_URL;
   const [isLoading, setIsLoading] = useState(false);
   const cartItems = useSelector((state) => state.cart);
+  const [orderedProducts, setOrderedProducts] = useState([]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (cartItems && cartItems.length > 0) {
+      let d = [];
+      cartItems.map((item) => {
+        d.push({ id: item.product_id, quantity: item.qty });
+      });
+      setOrderedProducts(d);
+    }
+  }, [cartItems]);
+
+  const cartHandler = () => {
+    if (orderedProducts && orderedProducts.length > 0) {
+      navigate("/shipping", { state: { orderedProducts: orderedProducts } });
+    } else {
+      toast.warn("Please add atleast one product to your cart!");
+    }
+  };
 
   return (
     <>
@@ -43,7 +63,7 @@ const AddToCartPage = () => {
                           <div className="quantity">
                             <button
                               className="qty_minus"
-                              onClick={() => dispatch(updateQuantity(item, -1))}
+                              onClick={() => dispatch(decreaseQty(item))}
                             >
                               -
                             </button>
@@ -55,7 +75,7 @@ const AddToCartPage = () => {
                             />
                             <button
                               className="qty_plus"
-                              onClick={() => dispatch(updateQuantity(item, 1))}
+                              onClick={() => dispatch(increaseQty(item, 1))}
                             >
                               +
                             </button>
@@ -63,6 +83,61 @@ const AddToCartPage = () => {
                           <div className="cart_price"> ${item.price}</div>
                         </div>
                       ))}
+                  </div>
+                </div>
+                <div className="col-md-4 col-12">
+                  <div className="cart_right">
+                    <div className="cart_item">
+                      <h3>Summary</h3>
+                      <p>
+                        Subtotal: <b>$14000</b>
+                      </p>
+                      <p>
+                        Delivery Charge: <b>$14000</b>
+                      </p>
+                      <p>
+                        Total amount to be paid: <b>$14000</b>
+                      </p>
+                      <div className="payment_mode py-3">
+                        <h4>Payment Mode:</h4>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="flexRadioDefault"
+                            id="flexRadioDefault1"
+                            checked
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="flexRadioDefault1"
+                          >
+                            Cash On Delivery
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="flexRadioDefault"
+                            id="flexRadioDefault2"
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="flexRadioDefault2"
+                          >
+                            Online
+                          </label>
+                        </div>
+                      </div>
+
+                      <button
+                        className="btn-reset product-card__btn"
+                        onClick={cartHandler}
+                      >
+                        Add Shipping Address
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

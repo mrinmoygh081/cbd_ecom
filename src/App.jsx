@@ -9,6 +9,7 @@ import NewProducts from "./pages/admin/NewProducts";
 import { Category } from "./pages/admin/Category";
 import FrontProducts from "./pages/FrontProducts";
 import AddToCartPage from "./pages/AddToCartPage";
+import ShippingAddress from "./pages/ShippingAddress";
 
 function App() {
   const { token } = useSelector((state) => state.auth);
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/products" element={<FrontProducts />} />
           <Route exact path="/cart" element={<AddToCartPage />} />
+          <Route exact path="/shipping" element={<ShippingAddress />} />
           {!token ? (
             <>
               <Route exact path="/admin" element={<Login />} />

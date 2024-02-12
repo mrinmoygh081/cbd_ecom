@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 // import { toast } from "react-toastify";
 
 // const initialState = {
@@ -18,32 +19,37 @@ export const cartStage = createSlice({
       } else {
         state.push({ image, product_id, price, name, quantity, qty });
       }
-      // } else {
-      //   toast.warning(
-      //     "No more items are currently available for this product."
-      //   );
-      // }
-
-      // state.count = state.length;
+      toast.success("The product has been added successfully!");
     },
     removeCartHandler: (state, action) => {
       const itemId = action.payload;
       return state.filter((item) => item.product_id !== itemId);
     },
-    updateQuantity: (state, action) => {
-      const d = action.payload;
-      console.log(d);
-      // const existingItem = state.find((item) => item.product_id === id);
+    increaseQty: (state, action) => {
+      const { product_id } = action.payload;
+      const existingItem = state.find((item) => item.product_id === product_id);
 
-      // if (existingItem) {
-      //   existingItem.qty = qty;
-      // }
+      if (existingItem) {
+        existingItem.qty = existingItem.qty + 1;
+      } else {
+        existingItem.qty = 1;
+      }
+      existingItem.price = parseInt(existingItem.price) * existingItem.qty;
+    },
+    decreaseQty: (state, action) => {
+      const { product_id } = action.payload;
+      const existingItem = state.find((item) => item.product_id === product_id);
+
+      if (existingItem && existingItem.qty > 1) {
+        existingItem.qty = existingItem.qty - 1;
+      }
+      existingItem.price = parseInt(existingItem.price) * existingItem.qty;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addCartHandler, removeCartHandler, updateQuantity } =
+export const { addCartHandler, removeCartHandler, increaseQty, decreaseQty } =
   cartStage.actions;
 
 export default cartStage.reducer;
