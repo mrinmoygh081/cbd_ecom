@@ -7,6 +7,7 @@ import { Products } from "./pages/admin/Products";
 import { useSelector } from "react-redux";
 import NewProducts from "./pages/admin/NewProducts";
 import { Category } from "./pages/admin/Category";
+import FrontProducts from "./pages/FrontProducts";
 
 function App() {
   const { token } = useSelector((state) => state.auth);
@@ -15,6 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/products" element={<FrontProducts />} />
           {!token ? (
             <>
               <Route exact path="/admin" element={<Login />} />

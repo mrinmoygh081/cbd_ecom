@@ -1,23 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  token: null,
+  data: [],
 };
 
 export const loginStage = createSlice({
   name: "loginStage",
   initialState,
   reducers: {
-    loginHandler: (state, action) => {
-      state.token = action.payload.token;
+    addCartHandler: (state, action) => {
+      state.data = [...initialState.data, action.payload.data];
     },
-    logoutHandler: (state) => {
-      state.token = null;
+    removeCartHandler: (state) => {
+      state.data = [];
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { loginHandler, logoutHandler } = loginStage.actions;
+export const { addCartHandler, removeCartHandler } = loginStage.actions;
 
 export default loginStage.reducer;

@@ -836,7 +836,8 @@ a {
   height: 320px;
 }
 .product-card__image--large img {
-  height: 370px;
+  height: auto;
+  max-height: 370px;
 }
 .product-card__info {
   display: flex;
