@@ -4,12 +4,15 @@ import HeaderFront from "../components/HeaderFront";
 
 import { Link, useLocation } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
-import { addToCart, getCategoriesName, getProducts } from "../utils/queries";
+import { getCategoriesName, getProducts } from "../utils/queries";
 import LoadingView from "../components/LoadingView";
+import { useDispatch } from "react-redux";
+import { addCartHandler } from "../redux/slices/cartSlice";
 
 const FrontProducts = () => {
   let backUrl = import.meta.env.VITE_BACKEND_URL;
   const location = useLocation();
+  const dispatch = useDispatch();
   const [products, setProducts] = useState(null);
   const [catName, setCatName] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +29,12 @@ const FrontProducts = () => {
       setIsLoading(false);
     })();
   }, [location.search]);
+
+  const addToCart = async (item) => {
+    let temp = item;
+    temp.qty = 1;
+    dispatch(addCartHandler(temp));
+  };
 
   return (
     <>

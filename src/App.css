@@ -1223,6 +1223,43 @@ input::-webkit-input-placeholder {
 }
 
 /* ============= Home Page Style End ============== */
+
+/* cart page */
+.cart_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  border-radius: 4px;
+}
+.cart_item .quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.cart_item .quantity input {
+  width: 40px;
+  margin: 0 10px;
+  text-align: center;
+}
+.cart_item .quantity .qty_minus,
+.cart_item .quantity .qty_plus {
+  font-size: 20px;
+  cursor: pointer;
+}
+.cart_item .cart_price {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .cart_item {
+    flex-direction: column;
+  }
+}
+
 /* ============================================== */
 
 /* media Query globally */

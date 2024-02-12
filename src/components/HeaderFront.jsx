@@ -114,7 +114,7 @@ const HeaderFront = () => {
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="#" className="menu-link">
+              <Link to="/cart" className="menu-link">
                 <FaCartShopping />
               </Link>
             </li>

@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import NewProducts from "./pages/admin/NewProducts";
 import { Category } from "./pages/admin/Category";
 import FrontProducts from "./pages/FrontProducts";
+import AddToCartPage from "./pages/AddToCartPage";
 
 function App() {
   const { token } = useSelector((state) => state.auth);
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/products" element={<FrontProducts />} />
+          <Route exact path="/cart" element={<AddToCartPage />} />
           {!token ? (
             <>
               <Route exact path="/admin" element={<Login />} />

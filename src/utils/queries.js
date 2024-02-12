@@ -39,7 +39,3 @@ export const getCategoriesName = async (catId, setCatName) => {
     toast.warning("No Category Found");
   }
 };
-
-export const addToCart = async (item) => {
-  console.log(item);
-};
