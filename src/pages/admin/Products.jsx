@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Fragment, useEffect, useState } from "react";
 import { deleteAPI, postAPI } from "../../utils/fetchAPIs";
 import { toast } from "react-toastify";
 import { reConfirm } from "../../Helper/smallFun";
+import { logoutHandler } from "../../redux/slices/loginSlice";
 
 export const Products = () => {
   const { token } = useSelector((state) => state.auth);
   const [data, setData] = useState(null);
   let backUrl = import.meta.env.VITE_BACKEND_URL;
+  const dispatch = useDispatch();
 
   const getProducts = async () => {
     let body = {
@@ -17,10 +19,12 @@ export const Products = () => {
       skip: 0,
     };
     const d = await postAPI("admin/getProduct", body, token);
+    if (d === "logout") {
+      window.location.replace("/admin");
+      dispatch(logoutHandler());
+    }
     if (d?.status) {
       setData(d?.data);
-    } else {
-      toast.warning("Please check your internet connection!");
     }
   };
 

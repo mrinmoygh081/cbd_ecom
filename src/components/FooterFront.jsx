@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+// imgs import
+import logo from "../public/images/logo.jpeg";
 
 export const FooterFront = () => {
   return (
@@ -12,18 +14,17 @@ export const FooterFront = () => {
                   <div className="footer-widget about-widget">
                     <div className="logo">
                       <Link to="/" className="footer_brand">
-                        CBDCITYALT
+                        <img src={logo} className="img-fluid" />
                       </Link>
                     </div>
                     <div className="text">
                       <p>
-                        Lorem ipsum dolor amet consectetur adipisicing elit sed
-                        eiusm tempor incididunt ut labore dolore magna aliqua
-                        enim ad minim veniam.
-                      </p>
-                      <p>
-                        Quis nostrud exercitation ullam aboris nisi aliquip exea
-                        commodo consequat duis aute irure.
+                        At CBD CITY, we&apos;re dedicated to bringing you the
+                        finest quality CBD products sourced from reputable
+                        suppliers around the globe. Whether you&apos;re seeking
+                        relief from pain, stress, anxiety, or simply looking to
+                        enhance your overall wellness, we have a wide range of
+                        premium CBD products to meet your needs.
                       </p>
                     </div>
                   </div>
@@ -196,7 +197,7 @@ export const FooterFront = () => {
             <div className="column col-lg-6 col-md-12 col-sm-12">
               <div className="copyright">
                 <span className="theme_color">CBDCITYALT</span>
-                &copy; 2023 All Right Reserved
+                &copy; 2024 All Right Reserved
               </div>
             </div>
             <div className="column col-lg-6 col-md-12 col-sm-12">

@@ -13,6 +13,7 @@ import ShippingAddress from "./pages/ShippingAddress";
 
 function App() {
   const { token } = useSelector((state) => state.auth);
+  console.log("token", token);
   return (
     <>
       <BrowserRouter>

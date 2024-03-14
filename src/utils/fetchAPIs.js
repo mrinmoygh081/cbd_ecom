@@ -24,6 +24,9 @@ export const postAPI = (path, payload, token) => {
     .catch((error) => {
       toast.error("Something went wrong! Please contact to the administrator");
       console.log(error);
+      if (error?.response?.data?.msg === "Invalid Token") {
+        return "logout";
+      }
     });
 };
 

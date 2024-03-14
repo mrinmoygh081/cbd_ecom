@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { FooterFront } from "../components/FooterFront";
 import HeaderFront from "../components/HeaderFront";
 import { postAPI } from "../utils/fetchAPIs";
-import { toast } from "react-toastify";
 
 // Import Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,12 +12,19 @@ import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 
 // imgs import
-import img1 from "../public/images/recent_img_1.webp";
-import img2 from "../public/images/recent_img_2.png";
-import img3 from "../public/images/recent_img_3.webp";
+// import img1 from "../public/images/recent_img_1.webp";
+// import img2 from "../public/images/recent_img_2.png";
+// import img3 from "../public/images/recent_img_3.webp";
 
 import img4 from "../public/images/product-1.webp";
 import img5 from "../public/images/product-2.png";
+import img_p1 from "../public/images/img_p1.jpeg";
+import img_p2 from "../public/images/img_p2.jpeg";
+import img_p3 from "../public/images/img_p3.jpeg";
+import img_p4 from "../public/images/img_p4.jpeg";
+import img_p5 from "../public/images/img_p5.jpeg";
+import logo_v from "../public/images/logo_v.jpeg";
+
 import { addCartHandler } from "../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 
@@ -37,8 +43,6 @@ const Home = () => {
       let special = d?.data.filter((item) => item.type === 2);
       setTopProducts(top);
       setSpecialProducts(special);
-    } else {
-      toast.warning("Please check your internet connection!");
     }
   };
 
@@ -58,22 +62,25 @@ const Home = () => {
       <main>
         <section className="container mt-65">
           <div className="row">
-            <div className="col-12 col-md-6 px-2 px-md-0 banner_text banner_radius_right">
+            <div className="col-12 col-md-10 px-2 px-md-0 banner_text banner_radius_right">
               <div className="banner_text_inner">
-                <h1>CBD UK: Buyers Guide</h1>
+                <h1>Welcome to CBD CITY</h1>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequatur maxime esse laudantium quo necessitatibus
-                  excepturi.
+                  At CBD CITY, we&apos;re dedicated to bringing you the finest
+                  quality CBD products sourced from reputable suppliers around
+                  the globe. Whether you are seeking relief from pain, stress,
+                  anxiety, or simply looking to enhance your overall wellness,
+                  we have a wide range of premium CBD products to meet your
+                  needs.
                 </p>
-                <button className="btn btn_width mt-3">
-                  <span>Click me!</span>
-                  <span className="ripple"></span>
-                </button>
+                <Link to="/products" className="btn btn_width mt-3">
+                  <span>Explore More!</span>
+                </Link>
               </div>
             </div>
-            <div className="col-12 col-md-6 px-0">
-              <iframe
+            <div className="col-12 col-md-2 px-0">
+              <img src={logo_v} alt="" className="img-fluid" />
+              {/* <iframe
                 className="banner_radius_left"
                 width="100%"
                 src="https://www.youtube.com/embed/XozF9VBLEfU?si=MQ3K99e5-2GmiltT"
@@ -81,7 +88,7 @@ const Home = () => {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
-              ></iframe>
+              ></iframe> */}
             </div>
           </div>
         </section>
@@ -282,19 +289,35 @@ const Home = () => {
           <div className="container">
             <div className="row">
               <div className="col-12 text_section">
-                <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+                <h2>Our Products</h2>
                 <h5>What you need to know about products?</h5>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Mollitia ut exercitationem corporis quibusdam amet
-                  illo,excepturi iste cupiditate soluta. Beatae, voluptas? Magni
-                  nam tempora dolorem laborum nemo totam magnam amet!
+                  Discover a diverse selection of CBD products carefully curated
+                  to deliver optimal results:
                 </p>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Mollitia ut exercitationem corporis quibusdam amet
-                  illo,excepturi iste cupiditate soluta. Beatae, voluptas? Magni
-                  nam tempora dolorem laborum nemo totam magnam amet!
+                  <b>CBD Oil:</b> Experience the natural benefits of CBD with
+                  our high-quality CBD oil tinctures available in various
+                  concentrations and flavors.
+                </p>
+                <p>
+                  <b>CBD Capsules:</b> Convenient and easy-to-use, our CBD
+                  capsules offer a precise dosage of CBD to support your daily
+                  wellness routine.
+                </p>
+                <p>
+                  <b>CBD Edibles:</b> Enjoy a tasty way to consume CBD with our
+                  delicious selection of CBD-infused gummies, chocolates, and
+                  other treats.
+                </p>
+                <p>
+                  <b>CBD Topicals:</b> Target specific areas of discomfort with
+                  our soothing CBD creams, balms, and lotions designed to
+                  provide localized relief.
+                </p>
+                <p>
+                  <b>CBD Vapes:</b> Explore our range of premium CBD vape oils
+                  and cartridges for a fast-acting and discreet CBD experience.
                 </p>
               </div>
             </div>
@@ -308,84 +331,44 @@ const Home = () => {
             </div>
             <div className="row">
               <div className="col-12 points">
-                <h2>5 Popular Ways to Consume CBD: Which One Is Best?</h2>
+                {/* <h2>Why Choose CBD CITY?</h2> */}
                 <div className="inner_point">
-                  <h3>Consectetur adipisicing elit.</h3>
+                  <h3>Why Choose CBD CITY?</h3>
                   <div className="inner_paragraph">
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugit sapiente mollitia dicta. Dignissimos, numquam vitae
-                      quasi eius delectus incidunt animi at ut labore itaque
-                      eaque neque libero sequi. Quaerat, dolorum.
+                      <b>Quality Assurance:</b> We prioritize quality and
+                      purity, ensuring that all our products undergo rigorous
+                      testing for potency and safety.
                     </p>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugit sapiente mollitia dicta. Dignissimos, numquam vitae
-                      quasi eius delectus incidunt animi at ut labore itaque
-                      eaque neque libero sequi. Quaerat, dolorum.
+                      <b>Expert Support:</b> Our knowledgeable team is here to
+                      answer your questions and provide personalized
+                      recommendations to help you find the perfect CBD products.
+                    </p>
+                    <p>
+                      <b>Convenience:</b> Shop with ease from the comfort of
+                      your home and enjoy fast, reliable shipping straight to
+                      your doorstep.
+                    </p>
+                    <p>
+                      <b>Customer Satisfaction:</b> Your satisfaction is our top
+                      priority. We strive to exceed your expectations with
+                      exceptional products and service.
                     </p>
                   </div>
                 </div>
                 <div className="inner_point">
-                  <h3>Itaque eaque neque libero sequi. Quaerat, dolorum?</h3>
+                  <h3>Experience the Benefits of CBD</h3>
                   <div className="inner_paragraph">
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugit sapiente mollitia dicta. Dignissimos, numquam vitae
-                      quasi eius delectus incidunt animi at ut labore itaque
-                      eaque neque libero sequi. Quaerat, dolorum.
+                      Join the countless individuals who have discovered the
+                      potential of CBD to enhance their well-being. Whether
+                      you&apos;re new to CBD or a seasoned enthusiast, CBD CITY
+                      is your trusted partner on your journey to wellness.
                     </p>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugit sapiente mollitia dicta. Dignissimos.
-                    </p>
-                  </div>
-                </div>
-                <div className="inner_point">
-                  <h3>
-                    Vitae quasi eius delectus incidunt animi at ut labore
-                    itaque.
-                  </h3>
-                  <div className="inner_paragraph">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugit sapiente mollitia dicta. Dignissimos, numquam vitae
-                      quasi eius delectus incidunt animi at ut labore itaque
-                      eaque neque libero sequi. Quaerat, dolorum.
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugit sapiente mollitia dicta. Dignissimos, numquam vitae
-                      quasi eius delectus incidunt.
-                    </p>
-                  </div>
-                </div>
-                <div className="inner_point">
-                  <h3>Lorem ipsum dolor sit amet, consectetur?</h3>
-                  <div className="inner_paragraph">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugit sapiente mollitia dicta. Dignissimos, numquam vitae
-                      quasi eius delectus incidunt animi at ut labore itaque
-                      eaque neque libero sequi. Quaerat, dolorum.
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                  </div>
-                </div>
-                <div className="inner_point">
-                  <h3>Dignissimos, numquam vitae quasi eius?</h3>
-                  <div className="inner_paragraph">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugit sapiente mollitia dicta. Dignissimos, numquam vitae
-                      quasi eius delectus incidunt animi at ut labore itaque
-                      eaque neque libero sequi. Quaerat, dolorum.
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugit sapiente mollitia dicta. Dignissimos.
+                      Explore our collection today and embark on a path to a
+                      healthier, happier you with CBD CITY.
                     </p>
                   </div>
                 </div>
@@ -397,18 +380,10 @@ const Home = () => {
           <div className="container my-5">
             <div className="row">
               <div className="col-12 col-md-6">
-                <img
-                  src="images/product_banner_1.webp"
-                  alt="product banner"
-                  className="img-fluid"
-                />
+                <img src={img_p1} alt="product banner" className="img-fluid" />
               </div>
               <div className="col-12 col-md-6">
-                <img
-                  src="images/product_banner_2.webp"
-                  alt="product banner"
-                  className="img-fluid"
-                />
+                <img src={img_p2} alt="product banner" className="img-fluid" />
               </div>
               <div className="col-12 mt-5 d-flex justify-content-center">
                 <button className="btn_green">Shop Now</button>
@@ -420,7 +395,7 @@ const Home = () => {
           <div className="container">
             <div className="row">
               <div className="col-12">
-                <h2 className="recent_news_heading">Recent News</h2>
+                <h2 className="recent_news_heading">Recent Products</h2>
                 <div className="swiper mySwiper">
                   <Swiper
                     className="swiper-wrapper"
@@ -444,8 +419,8 @@ const Home = () => {
                     }}
                   >
                     <SwiperSlide className="swiper-slide">
-                      <img src={img1} alt="" className="img-fluid" />
-                      <div className="slider_inner_text">
+                      <img src={img_p1} alt="" className="img-fluid" />
+                      {/* <div className="slider_inner_text">
                         <h2>
                           Cupiditate dolores corporis inventore provident.
                         </h2>
@@ -457,11 +432,11 @@ const Home = () => {
                           elit. Eos, quam numquam soluta ad quisquam aperiam
                           repudiandae magni error quod aspernatur.
                         </p>
-                      </div>
+                      </div> */}
                     </SwiperSlide>
                     <SwiperSlide className="swiper-slide">
-                      <img src={img2} alt="" className="img-fluid" />
-                      <div className="slider_inner_text">
+                      <img src={img_p2} alt="" className="img-fluid" />
+                      {/* <div className="slider_inner_text">
                         <h2>
                           Cupiditate dolores corporis inventore provident.
                         </h2>
@@ -473,11 +448,11 @@ const Home = () => {
                           elit. Eos, quam numquam soluta ad quisquam aperiam
                           repudiandae magni error quod aspernatur.
                         </p>
-                      </div>
+                      </div> */}
                     </SwiperSlide>
                     <SwiperSlide className="swiper-slide">
-                      <img src={img3} alt="" className="img-fluid" />
-                      <div className="slider_inner_text">
+                      <img src={img_p3} alt="" className="img-fluid" />
+                      {/* <div className="slider_inner_text">
                         <h2>
                           Cupiditate dolores corporis inventore provident.
                         </h2>
@@ -489,65 +464,23 @@ const Home = () => {
                           elit. Eos, quam numquam soluta ad quisquam aperiam
                           repudiandae magni error quod aspernatur.
                         </p>
-                      </div>
+                      </div> */}
                     </SwiperSlide>
                     <SwiperSlide className="swiper-slide">
-                      <img src={img1} alt="" className="img-fluid" />
-                      <div className="slider_inner_text">
-                        <h2>
-                          Cupiditate dolores corporis inventore provident.
-                        </h2>
-                        <span className="slider_inner_date">
-                          August 28, 2023
-                        </span>
-                        <p className="slider_inner_paragraph">
-                          Lorem, ipsum dolor sit amet consectetur adipisicing
-                          elit. Eos, quam numquam soluta ad quisquam aperiam
-                          repudiandae magni error quod aspernatur.
-                        </p>
-                      </div>
+                      <img src={img_p4} alt="" className="img-fluid" />
                     </SwiperSlide>
                     <SwiperSlide className="swiper-slide">
-                      <img src={img2} alt="" className="img-fluid" />
-                      <div className="slider_inner_text">
-                        <h2>
-                          Cupiditate dolores corporis inventore provident.
-                        </h2>
-                        <span className="slider_inner_date">
-                          August 28, 2023
-                        </span>
-                        <p className="slider_inner_paragraph">
-                          Lorem, ipsum dolor sit amet consectetur adipisicing
-                          elit. Eos, quam numquam soluta ad quisquam aperiam
-                          repudiandae magni error quod aspernatur.
-                        </p>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="swiper-slide">
-                      <img src={img3} alt="" className="img-fluid" />
-                      <div className="slider_inner_text">
-                        <h2>
-                          Cupiditate dolores corporis inventore provident.
-                        </h2>
-                        <span className="slider_inner_date">
-                          August 28, 2023
-                        </span>
-                        <p className="slider_inner_paragraph">
-                          Lorem, ipsum dolor sit amet consectetur adipisicing
-                          elit. Eos, quam numquam soluta ad quisquam aperiam
-                          repudiandae magni error quod aspernatur.
-                        </p>
-                      </div>
+                      <img src={img_p5} alt="" className="img-fluid" />
                     </SwiperSlide>
                   </Swiper>
                   <div className="swiper-pagination"></div>
                 </div>
               </div>
               <div className="col-12 d-flex justify-content-center">
-                <button className="btn mt-5">
-                  <span>View More Articles</span>
+                <Link to={"/products"} className="btn mt-5">
+                  <span>View More Products</span>
                   <span className="ripple"></span>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -560,8 +493,7 @@ const Home = () => {
                 News About Us
               </h1>
               <p className="des how-de">
-                Get the Latest news about digital Marketing to Your Pocket, drop
-                your <br />
+                Get the Latest news about CBD to Your Pocket, drop your <br />
                 email below to get daliy update about us
               </p>
 
