@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { FooterFront } from "../components/FooterFront";
 import HeaderFront from "../components/HeaderFront";
-import { postAPI } from "../utils/fetchAPIs";
+// import { postAPI } from "../utils/fetchAPIs";
 
 // Import Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -25,30 +25,38 @@ import img_p4 from "../public/images/img_p4.jpeg";
 import img_p5 from "../public/images/img_p5.jpeg";
 import logo_v from "../public/images/logo_v.jpeg";
 
+import cbd_cream from "../public/images/cbd_cream.jpeg";
+import cbd_gummies from "../public/images/cbd_gummies.jpeg";
+import cbd_lotion from "../public/images/cbd_lotion.jpeg";
+import cbd_oil2 from "../public/images/cbd_oil2.jpeg";
+import cbd_toothpaste from "../public/images/cbd_toothpaste.jpeg";
+import cbd_isolate from "../public/images/cbd_isolate.jpeg";
+import cbd_pets from "../public/images/cbd_pets.jpeg";
+
 import { addCartHandler } from "../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 
 const Home = () => {
   const dispatch = useDispatch();
-  let backUrl = import.meta.env.VITE_BACKEND_URL;
+  // let backUrl = import.meta.env.VITE_BACKEND_URL;
   // const [products, setProducts] = useState(null);
-  const [topProducts, setTopProducts] = useState(null);
-  const [specialProducts, setSpecialProducts] = useState(null);
+  // const [topProducts, setTopProducts] = useState(null);
+  // const [specialProducts, setSpecialProducts] = useState(null);
 
-  const getProducts = async () => {
-    const d = await postAPI("user/product", null, null);
-    if (d?.status) {
-      // setProducts(d?.data);
-      let top = d?.data.filter((item) => item.type === 1);
-      let special = d?.data.filter((item) => item.type === 2);
-      setTopProducts(top);
-      setSpecialProducts(special);
-    }
-  };
+  // const getProducts = async () => {
+  //   const d = await postAPI("user/product", null, null);
+  //   if (d?.status) {
+  //     // setProducts(d?.data);
+  //     let top = d?.data.filter((item) => item.type === 1);
+  //     let special = d?.data.filter((item) => item.type === 2);
+  //     setTopProducts(top);
+  //     setSpecialProducts(special);
+  //   }
+  // };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  // useEffect(() => {
+  //   getProducts();
+  // }, []);
 
   const addToCart = async (item) => {
     let temp = item;
@@ -167,7 +175,7 @@ const Home = () => {
                   },
                 }}
               >
-                {topProducts &&
+                {/* {topProducts &&
                   topProducts.map((item, i) => (
                     <SwiperSlide className="swiper-slide" key={i}>
                       <article className="product-card product-card--large">
@@ -204,7 +212,147 @@ const Home = () => {
                         </div>
                       </article>
                     </SwiperSlide>
-                  ))}
+                  ))} */}
+                <SwiperSlide className="swiper-slide">
+                  <article className="product-card product-card--large">
+                    <div className="product-card__top">
+                      <div className="product-card__image product-card__image--large">
+                        <img
+                          src={cbd_oil2}
+                          alt={""}
+                          className="product-card_img"
+                          width="100%"
+                          height="440px"
+                        />
+                      </div>
+                    </div>
+                    <div className="product-card__info">
+                      <h3 className="product-card__title">
+                        <Link to="/">CBD Oil</Link>
+                      </h3>
+
+                      <div className="product-card__price price">
+                        <span className="price__current price__current--small">
+                          $50
+                        </span>
+                      </div>
+                      <div className="product-card__props">
+                        <button
+                          className="btn-reset product-card__btn"
+                          onClick={() => addToCart("item")}
+                        >
+                          <FaCartShopping />
+                          Add to cart
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide">
+                  <article className="product-card product-card--large">
+                    <div className="product-card__top">
+                      <div className="product-card__image product-card__image--large">
+                        <img
+                          src={cbd_cream}
+                          alt={""}
+                          className="product-card_img"
+                          width="100%"
+                          height="440px"
+                        />
+                      </div>
+                    </div>
+                    <div className="product-card__info">
+                      <h3 className="product-card__title">
+                        <Link to="/">CBD Cream</Link>
+                      </h3>
+
+                      <div className="product-card__price price">
+                        <span className="price__current price__current--small">
+                          $50
+                        </span>
+                      </div>
+                      <div className="product-card__props">
+                        <button
+                          className="btn-reset product-card__btn"
+                          onClick={() => addToCart("item")}
+                        >
+                          <FaCartShopping />
+                          Add to cart
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide">
+                  <article className="product-card product-card--large">
+                    <div className="product-card__top">
+                      <div className="product-card__image product-card__image--large">
+                        <img
+                          src={cbd_lotion}
+                          alt={""}
+                          className="product-card_img"
+                          width="100%"
+                          height="440px"
+                        />
+                      </div>
+                    </div>
+                    <div className="product-card__info">
+                      <h3 className="product-card__title">
+                        <Link to="/">CBD Lotion</Link>
+                      </h3>
+
+                      <div className="product-card__price price">
+                        <span className="price__current price__current--small">
+                          $50
+                        </span>
+                      </div>
+                      <div className="product-card__props">
+                        <button
+                          className="btn-reset product-card__btn"
+                          onClick={() => addToCart("item")}
+                        >
+                          <FaCartShopping />
+                          Add to cart
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide">
+                  <article className="product-card product-card--large">
+                    <div className="product-card__top">
+                      <div className="product-card__image product-card__image--large">
+                        <img
+                          src={cbd_gummies}
+                          alt={""}
+                          className="product-card_img"
+                          width="100%"
+                          height="440px"
+                        />
+                      </div>
+                    </div>
+                    <div className="product-card__info">
+                      <h3 className="product-card__title">
+                        <Link to="/">CBD Gummies</Link>
+                      </h3>
+
+                      <div className="product-card__price price">
+                        <span className="price__current price__current--small">
+                          $50
+                        </span>
+                      </div>
+                      <div className="product-card__props">
+                        <button
+                          className="btn-reset product-card__btn"
+                          onClick={() => addToCart("item")}
+                        >
+                          <FaCartShopping />
+                          Add to cart
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </SwiperSlide>
               </Swiper>
             </div>
             <div className="centered product-cards__explore">
@@ -241,7 +389,7 @@ const Home = () => {
                   },
                 }}
               >
-                {specialProducts &&
+                {/* {specialProducts &&
                   specialProducts.map((item, i) => (
                     <SwiperSlide className="swiper-slide" key={i}>
                       <article className="product-card product-card--large">
@@ -275,7 +423,103 @@ const Home = () => {
                         </div>
                       </article>
                     </SwiperSlide>
-                  ))}
+                  ))} */}
+                <SwiperSlide className="swiper-slide">
+                  <article className="product-card product-card--large">
+                    <div className="product-card__top">
+                      <div className="product-card__image product-card__image--large">
+                        <img
+                          src={cbd_toothpaste}
+                          alt={""}
+                          className="product-card_img"
+                          width="100%"
+                          height="440px"
+                        />
+                      </div>
+                    </div>
+                    <div className="product-card__info">
+                      <h3 className="product-card__title">
+                        <Link to="/">CBD Toothpaste</Link>
+                      </h3>
+
+                      <div className="product-card__price price">
+                        <span className="price__current price__current--small">
+                          $50
+                        </span>
+                      </div>
+                      <div className="product-card__props">
+                        <button className="btn-reset product-card__btn">
+                          <FaCartShopping />
+                          Add to cart
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide">
+                  <article className="product-card product-card--large">
+                    <div className="product-card__top">
+                      <div className="product-card__image product-card__image--large">
+                        <img
+                          src={cbd_isolate}
+                          alt={""}
+                          className="product-card_img"
+                          width="100%"
+                          height="440px"
+                        />
+                      </div>
+                    </div>
+                    <div className="product-card__info">
+                      <h3 className="product-card__title">
+                        <Link to="/">CBD Isolate</Link>
+                      </h3>
+
+                      <div className="product-card__price price">
+                        <span className="price__current price__current--small">
+                          $50
+                        </span>
+                      </div>
+                      <div className="product-card__props">
+                        <button className="btn-reset product-card__btn">
+                          <FaCartShopping />
+                          Add to cart
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide">
+                  <article className="product-card product-card--large">
+                    <div className="product-card__top">
+                      <div className="product-card__image product-card__image--large">
+                        <img
+                          src={cbd_pets}
+                          alt={""}
+                          className="product-card_img"
+                          width="100%"
+                          height="440px"
+                        />
+                      </div>
+                    </div>
+                    <div className="product-card__info">
+                      <h3 className="product-card__title">
+                        <Link to="/">CBD Pets</Link>
+                      </h3>
+
+                      <div className="product-card__price price">
+                        <span className="price__current price__current--small">
+                          $50
+                        </span>
+                      </div>
+                      <div className="product-card__props">
+                        <button className="btn-reset product-card__btn">
+                          <FaCartShopping />
+                          Add to cart
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                </SwiperSlide>
               </Swiper>
             </div>
             <div className="centered product-cards__explore">
